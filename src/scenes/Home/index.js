@@ -1,93 +1,21 @@
 import React, { Component } from 'react';
 import SearchJumbo from './components/SearchJumbo/index';
+import MovieList from './components/MovieList/index';
 
 class Home extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            results: [1, 2, 3, 4]
+        };
+    }
+
     render() {
         return (
             <div>
                 <SearchJumbo />
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-6 col-lg-4">
-                            <div className="card">
-                                <img className="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap" />
-                                    <div className="card-body">
-                                        <h4 className="card-title">Card title</h4>
-                                        <p className="card-text">
-                                            Some quick example text to build on the card
-                                            title and make up the bulk of the card's content.
-                                        </p>
-                                        <a href="#" className="btn btn-primary">Go somewhere</a>
-                                    </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4">
-                            <div className="card">
-                                <img className="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap" />
-                                    <div className="card-body">
-                                        <h4 className="card-title">Card title</h4>
-                                        <p className="card-text">
-                                            Some quick example text to build on the card
-                                            title and make up the bulk of the card's content.
-                                        </p>
-                                        <a href="#" className="btn btn-primary">Go somewhere</a>
-                                    </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4">
-                            <div className="card">
-                                <img className="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap" />
-                                    <div className="card-body">
-                                        <h4 className="card-title">Card title</h4>
-                                        <p className="card-text">
-                                            Some quick example text to build on the card
-                                            title and make up the bulk of the card's content.
-                                        </p>
-                                        <a href="#" className="btn btn-primary">Go somewhere</a>
-                                    </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4">
-                            <div className="card">
-                                <img className="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap" />
-                                    <div className="card-body">
-                                        <h4 className="card-title">Card title</h4>
-                                        <p className="card-text">
-                                            Some quick example text to build on the card
-                                            title and make up the bulk of the card's content.
-                                        </p>
-                                        <a href="#" className="btn btn-primary">Go somewhere</a>
-                                    </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4">
-                            <div className="card">
-                                <img className="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap" />
-                                    <div className="card-body">
-                                        <h4 className="card-title">Card title</h4>
-                                        <p className="card-text">
-                                            Some quick example text to build on the card
-                                            title and make up the bulk of the card's content.
-                                        </p>
-                                        <a href="#" className="btn btn-primary">Go somewhere</a>
-                                    </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4">
-                            <div className="card">
-                                <img className="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap" />
-                                    <div className="card-body">
-                                        <h4 className="card-title">Card title</h4>
-                                        <p className="card-text">
-                                            Some quick example text to build on the card
-                                            title and make up the bulk of the card's content.
-                                        </p>
-                                        <a href="#" className="btn btn-primary">Go somewhere</a>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <MovieList results={this.state.results} />
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-12">
