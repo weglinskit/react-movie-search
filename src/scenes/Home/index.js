@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
+import SearchJumbo from './components/SearchJumbo/index';
 
 class Home extends Component {
     render() {
         return (
             <div>
-                <div className="jumbotron">
-                    <div className="container">
-                        <form>
-                            <div className="form-group">
-                                <input type="text"
-                                       className="form-control form-control-lg"
-                                       id="search-input"
-                                       placeholder="Search for movie..." />
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <SearchJumbo />
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 col-lg-4">
