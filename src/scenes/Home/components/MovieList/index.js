@@ -5,7 +5,7 @@ const ResultsList = (props) => {
     const items = props.results && Array.isArray(props.results) ?
         props.results.map(
             (item) => {
-                return <MovieBox movie={ item } />
+                return <MovieBox key={item.id.toString()} movie={ item } />
             }
         ) :
         <p>Props result value not occurs or is not array</p>;

@@ -7,7 +7,16 @@ class Home extends Component {
     constructor() {
         super();
         this.state = {
-            results: [1, 2, 3, 4]
+            results: [
+                {
+                    id: 1,
+                    href: '/movie/1'
+                },
+                {
+                    id: 2,
+                    href: '/movie/2'
+                }
+            ]
         };
     }
 
