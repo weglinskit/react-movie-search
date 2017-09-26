@@ -17,6 +17,7 @@ class Home extends Component {
     constructor() {
         super();
         this.state = {
+            text: '',
             results: [
                 {
                     id: 1,
@@ -32,6 +33,18 @@ class Home extends Component {
     }
 
     /**
+     * Method for handling change in text input from SearchJumbo component.
+     * Method getting text and updating state.
+     *
+     * @method inputChangeText
+     * @param {String} text String from search text input
+     */
+        inputChangeText = (text) => {
+        this.setState({text});
+        console.log(this.state);
+    };
+
+    /**
      * Returns JSX object with page desription
      *
      * @method render
@@ -40,7 +53,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <SearchJumbo />
+                <SearchJumbo inputChangeText={ this.inputChangeText }/>
                 <MoviesList results={ this.state.results } />
                 <Pagination pagesNumber={ this.state.pagesNumber }/>
             </div>

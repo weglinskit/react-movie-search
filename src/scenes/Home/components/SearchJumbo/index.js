@@ -2,7 +2,8 @@ import React from 'react';
 import InputText from '../../../../components/InputText/index';
 
 /**
- * Provides stateless functional component for rendering jumbotron with search input
+ * Provides stateless functional component for rendering jumbotron with search input.
+ * Component only provides view. Passing information about text inside input using inputChangeText function.
  *
  * @module SearchJumbo
  * @param {Object} props Props from parent component
@@ -14,7 +15,9 @@ const SearchJumbo = (props) => {
             <div className="container">
                 <form>
                     <div className="form-group">
-                        <InputText id="search-input" placeholder="Search for movie..." />
+                        <InputText id="search-input"
+                                   placeholder="Search for movie..."
+                                   onInputChange={ props.inputChangeText }/>
                     </div>
                 </form>
             </div>
