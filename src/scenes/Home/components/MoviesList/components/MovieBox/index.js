@@ -1,6 +1,13 @@
 import React from 'react';
 
-const MovietBox = (props) => {
+/**
+ * Provides stateless functional component for rendering particular movie box
+ *
+ * @module MovieBox
+ * @param {Object} props Props from parent component
+ * @return {Object} JSX object with short movie description layout
+ */
+const MovieBox = (props) => {
     return (
         <div className="col-md-6 col-lg-4">
             <div className="card">
@@ -18,4 +25,4 @@ const MovietBox = (props) => {
     );
 };
 
-export default MovietBox;
+export default MovieBox;

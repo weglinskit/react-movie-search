@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import SearchJumbo from './components/SearchJumbo/index';
-import MovieList from './components/MovieList/index';
+import MoviesList from './components/MoviesList/index';
 
+/**
+ * Home component - main page. This component provides basic view for searching movies.
+ *
+ * @class Home
+ * @constructor
+ * @extends Component
+ */
 class Home extends Component {
 
     constructor() {
@@ -20,11 +27,17 @@ class Home extends Component {
         };
     }
 
+    /**
+     * Returns JSX object with page desription
+     *
+     * @method render
+     * @return {Object} page description in JSX syntax
+     */
     render() {
         return (
             <div>
                 <SearchJumbo />
-                <MovieList results={this.state.results} />
+                <MoviesList results={this.state.results} />
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-12">
