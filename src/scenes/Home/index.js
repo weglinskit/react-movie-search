@@ -19,7 +19,9 @@ class Home extends Component {
         this.state = {
             text: '',
             results: [],
-            pagesNumber: 0
+            pagesNumber: 0,
+            imageBaseUrl: '',
+            backDropSize: ''
         };
     }
 
@@ -55,6 +57,30 @@ class Home extends Component {
             });
     };
 
+    componentWillMount() {
+        const api_key = 'e51c38413ab9317db1cd3e69902d68f1';
+        const base_url = 'https://api.themoviedb.org/3';
+
+        fetch(`${base_url}/configuration?api_key=${api_key}`)
+            .then((response) => {
+                var contentType = response.headers.get("content-type");
+                if(contentType && contentType.includes("application/json")) {
+                    return response.json();
+                }
+                throw new TypeError("Oops, we haven't got JSON!");
+            })
+            .then((json) => {
+                this.setState({
+                    imageBaseUrl: json.images.base_url,
+                    backDropSize: json.images.backdrop_sizes[0]
+                });
+                console.log(this.state);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
     /**
      * Returns JSX object with page desription
      *
@@ -64,9 +90,11 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <SearchJumbo inputChangeText={ this.inputChangeText }/>
-                <MoviesList results={ this.state.results } />
-                <Pagination pagesNumber={ this.state.pagesNumber }/>
+                <SearchJumbo inputChangeText={ this.inputChangeText } />
+                <MoviesList results={ this.state.results }
+                            imageBaseUrl={ this.state.imageBaseUrl }
+                            backDropSize={ this.state.backDropSize } />
+                <Pagination pagesNumber={ this.state.pagesNumber } />
             </div>
         );
     }

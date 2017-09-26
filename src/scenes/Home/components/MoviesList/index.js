@@ -12,7 +12,10 @@ const MoviesList = (props) => {
     const items = props.results && Array.isArray(props.results) ?
         props.results.map(
             (item) => {
-                return <MovieBox key={item.id.toString()} movie={ item } />
+                return <MovieBox key={item.id.toString()}
+                                 movie={ item }
+                                 imageBaseUrl={ props.imageBaseUrl }
+                                 backDropSize={ props.backDropSize } />
             }
         ) :
         <p>Props result value not occurs or is not array</p>;

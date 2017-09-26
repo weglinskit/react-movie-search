@@ -11,7 +11,9 @@ const MovieBox = (props) => {
     return (
         <div className="col-md-6 col-lg-4">
             <div className="card">
-                <img className="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap" />
+                <img className="card-img-top"
+                     src={ `${ props.imageBaseUrl }/${ props.backDropSize }/${ props.movie.backdrop_path }` }
+                     alt="Card cap" />
                 <div className="card-body">
                     <h4 className="card-title">{ props.movie.title }</h4>
                     <p className="card-text">
