@@ -18,30 +18,41 @@ class Home extends Component {
         super();
         this.state = {
             text: '',
-            results: [
-                {
-                    id: 1,
-                    href: '/movie/1'
-                },
-                {
-                    id: 2,
-                    href: '/movie/2'
-                }
-            ],
-            pagesNumber: 3
+            results: [],
+            pagesNumber: 0
         };
     }
 
     /**
      * Method for handling change in text input from SearchJumbo component.
-     * Method getting text and updating state.
+     * Method getting text, updating state and running fetch ajax query to get movies from MovieDB.
      *
      * @method inputChangeText
      * @param {String} text String from search text input
      */
-        inputChangeText = (text) => {
+    inputChangeText = (text) => {
         this.setState({text});
-        console.log(this.state);
+
+        const api_key = 'e51c38413ab9317db1cd3e69902d68f1';
+        const base_url = 'https://api.themoviedb.org/3/search/movie';
+
+        fetch(`${base_url}?api_key=${api_key}&query=${text}`)
+            .then((response) => {
+                var contentType = response.headers.get("content-type");
+                if(contentType && contentType.includes("application/json")) {
+                    return response.json();
+                }
+                throw new TypeError("Oops, we haven't got JSON!");
+            })
+            .then((json) => {
+                this.setState({
+                    //pagesNumber: json.total_pages,
+                    results: json.results
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     /**
