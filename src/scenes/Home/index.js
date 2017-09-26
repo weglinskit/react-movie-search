@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import Pagination from '../../components/Pagination/index';
+
 import SearchJumbo from './components/SearchJumbo/index';
 import MoviesList from './components/MoviesList/index';
 
@@ -23,7 +26,8 @@ class Home extends Component {
                     id: 2,
                     href: '/movie/2'
                 }
-            ]
+            ],
+            pagesNumber: 3
         };
     }
 
@@ -37,32 +41,8 @@ class Home extends Component {
         return (
             <div>
                 <SearchJumbo />
-                <MoviesList results={this.state.results} />
-                <div className="container">
-                    <div className="row">
-                        <div className="col-sm-12">
-                            <nav aria-label="Page navigation example">
-                                <ul className="pagination">
-                                    <li className="page-item">
-                                        <a className="page-link" href="#">Previous</a>
-                                    </li>
-                                    <li className="page-item">
-                                        <a className="page-link" href="#">1</a>
-                                    </li>
-                                    <li className="page-item">
-                                        <a className="page-link" href="#">2</a>
-                                    </li>
-                                    <li className="page-item">
-                                        <a className="page-link" href="#">3</a>
-                                    </li>
-                                    <li className="page-item">
-                                        <a className="page-link" href="#">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
+                <MoviesList results={ this.state.results } />
+                <Pagination pagesNumber={ this.state.pagesNumber }/>
             </div>
         );
     }
