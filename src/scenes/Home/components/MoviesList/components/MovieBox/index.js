@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * Provides stateless functional component for rendering particular movie box
@@ -41,7 +42,7 @@ const MovieBox = (props) => {
                     <p className="card-text">
                         { abstractedDescription }
                     </p>
-                    <a href={ `/movie/${ props.movie.id }` } className="btn btn-primary">Go somewhere</a>
+                    <Link to={ `/movie/${ props.movie.id }` } className="btn btn-primary"> Details </Link>
                 </div>
             </div>
         </div>
