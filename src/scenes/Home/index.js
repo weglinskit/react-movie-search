@@ -74,7 +74,6 @@ class Home extends Component {
                     imageBaseUrl: json.images.base_url,
                     backDropSize: json.images.backdrop_sizes[0]
                 });
-                console.log(this.state);
             })
             .catch((error) => {
                 console.log(error);
