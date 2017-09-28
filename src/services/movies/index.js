@@ -23,10 +23,11 @@ export function getConfiguration() {
  *
  * @method inputChangeText
  * @param {String} text String from search text input
+ * @param {Integer} page Int with page number to get
  * @return {Promise}
  */
-export function findMovies(text) {
-    return fetch(`${base_url}/search/movie?api_key=${api_key}&query=${text}`)
+export function findMovies(text, page) {
+    return fetch(`${base_url}/search/movie?api_key=${api_key}&query=${text}&page=${page}`)
         .then((response) => {
             let contentType = response.headers.get("content-type");
             if(contentType && contentType.includes("application/json")) {

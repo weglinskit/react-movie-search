@@ -18,7 +18,9 @@ class App extends Component {
 
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            currentPage: 1
+        };
     }
 
     /**
