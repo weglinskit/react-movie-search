@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Pagination from '../../components/Pagination/index';
 
@@ -28,14 +29,16 @@ class Home extends Component {
     }
 
     /**
-     * Method for handling change in text input from SearchJumbo component.
+     * Method for finding movies after change in text input from SearchJumbo component.
      * Method getting text, updating state and running fetch ajax query to get movies from MovieDB.
+     * Search text is set for component and app state.
      *
-     * @method inputChangeText
+     * @method findByText
      * @param {String} text String from search text input
      */
-    inputChangeText = (text) => {
+    findByText = (text) => {
         this.setState({text});
+        this.context.appState({text});
 
         findMovies(text)
             .then((json) => {
@@ -60,6 +63,13 @@ class Home extends Component {
             .catch((error) => {
                 console.log(error);
             });
+
+        const search = this.props.location.search;
+        const params = new URLSearchParams(search);
+
+        if (params.get('back') && this.context.appState('text')) {
+            this.findByText(this.context.appState('text'));
+        }
     }
 
     /**
@@ -71,7 +81,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <SearchJumbo inputChangeText={ this.inputChangeText } />
+                <SearchJumbo inputChangeText={ this.findByText } />
                 <MoviesList results={ this.state.results }
                             imageBaseUrl={ this.state.imageBaseUrl }
                             backDropSize={ this.state.backDropSize } />
@@ -80,5 +90,9 @@ class Home extends Component {
         );
     }
 }
+
+Home.contextTypes = {
+    appState: PropTypes.func
+};
 
 export default Home;
