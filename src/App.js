@@ -19,7 +19,7 @@ class App extends Component {
             <Router>
                 <div>
                     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                        <a className="navbar-brand" href="#">movie-search</a>
+                        <a className="navbar-brand" href="/">movie-search</a>
                     </nav>
                     <Route exact path="/" component={ Home } />
                     <Route path="/movie/:id" component={ MovieDetails } />

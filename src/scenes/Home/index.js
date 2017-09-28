@@ -5,6 +5,8 @@ import Pagination from '../../components/Pagination/index';
 import SearchJumbo from './components/SearchJumbo/index';
 import MoviesList from './components/MoviesList/index';
 
+import { getConfiguration, findMovies } from '../../services/movies/index';
+
 /**
  * Home component - main page. This component provides basic view for searching movies.
  *
@@ -35,17 +37,7 @@ class Home extends Component {
     inputChangeText = (text) => {
         this.setState({text});
 
-        const api_key = 'e51c38413ab9317db1cd3e69902d68f1';
-        const base_url = 'https://api.themoviedb.org/3/search/movie';
-
-        fetch(`${base_url}?api_key=${api_key}&query=${text}`)
-            .then((response) => {
-                var contentType = response.headers.get("content-type");
-                if(contentType && contentType.includes("application/json")) {
-                    return response.json();
-                }
-                throw new TypeError("Oops, we haven't got JSON!");
-            })
+        findMovies(text)
             .then((json) => {
                 this.setState({
                     //pagesNumber: json.total_pages,
@@ -58,17 +50,7 @@ class Home extends Component {
     };
 
     componentWillMount() {
-        const api_key = 'e51c38413ab9317db1cd3e69902d68f1';
-        const base_url = 'https://api.themoviedb.org/3';
-
-        fetch(`${base_url}/configuration?api_key=${api_key}`)
-            .then((response) => {
-                var contentType = response.headers.get("content-type");
-                if(contentType && contentType.includes("application/json")) {
-                    return response.json();
-                }
-                throw new TypeError("Oops, we haven't got JSON!");
-            })
+        getConfiguration()
             .then((json) => {
                 this.setState({
                     imageBaseUrl: json.images.base_url,
