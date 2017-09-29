@@ -40,12 +40,19 @@ class InputText extends Component {
      */
     render() {
         return (
-            <input type="text"
-                   className="form-control form-control-lg"
-                   id={ this.props.id }
-                   placeholder={ this.props.placeholder }
-                   value={ this.props.value }
-                   onChange={ event => this.onInputChange(event) }/>
+            <div className="input-group">
+                <input type="text"
+                       className="form-control form-control-lg"
+                       id={ this.props.id }
+                       placeholder={ this.props.placeholder }
+                       value={ this.props.value }
+                       onChange={ event => this.onInputChange(event) }/>
+                <span className="input-group-btn">
+                    <button className="btn btn-secondary btn-lg" type="button">
+                        <span className="oi oi-magnifying-glass"></span>
+                    </button>
+                </span>
+            </div>
         );
     }
 }

@@ -54,6 +54,13 @@ class Home extends Component {
             });
     };
 
+    /**
+     * Method for handling page change by pagination.
+     * Method getting string param 'prev' or 'next' and base on that param changing page in pagination.
+     *
+     * @method changePage
+     * @param {String} direction can be prev or next
+     */
     changePage = (direction) => {
         let currentPage = this.state.currentPage;
         let pagesNumber = this.state.pagesNumber;
@@ -88,7 +95,12 @@ class Home extends Component {
         const params = new URLSearchParams(search);
 
         if (params.get('back') && this.context.appState('text')) {
-            this.findByText(this.context.appState('text'));
+            this.setState({
+                text: this.context.appState('text'),
+                currentPage: this.context.appState('currentPage')
+            });
+
+            this.findByText(this.context.appState('text'), this.context.appState('currentPage'));
         }
     }
 
@@ -101,7 +113,8 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <SearchJumbo inputChangeText={ this.findByText } />
+                <SearchJumbo inputValue={ this.state.text }
+                             inputChangeText={ this.findByText } />
                 <MoviesList results={ this.state.results }
                             imageBaseUrl={ this.state.imageBaseUrl }
                             backDropSize={ this.state.backDropSize } />

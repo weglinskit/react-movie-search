@@ -13,10 +13,11 @@ const SearchJumbo = (props) => {
     return (
         <div className="jumbotron">
             <div className="container">
-                <form>
+                <form onSubmit={ (event) => event.preventDefault() }>
                     <div className="form-group">
                         <InputText id="search-input"
                                    placeholder="Search for movie..."
+                                   value={ props.inputValue }
                                    onInputChange={ props.inputChangeText }/>
                     </div>
                 </form>
