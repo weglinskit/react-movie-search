@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { animateScroll as scroll } from 'react-scroll';
+
 import Pagination from '../../components/Pagination/index';
 
 import SearchJumbo from './components/SearchJumbo/index';
@@ -77,7 +79,9 @@ class Home extends Component {
         this.context.appState({currentPage});
 
         this.findByText(this.state.text, currentPage);
-    }
+
+        scroll.scrollToTop()
+    };
 
     componentWillMount() {
         getConfiguration()
